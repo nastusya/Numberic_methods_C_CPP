@@ -23,5 +23,6 @@ cout<<" Початок iнтервалу a = "; cin>>a;
 cout<<" Kiнець iнтервалу b = "; cin>>b;
 cout<<" Похибка e = "; cin>>e;
 cout<<" Корiнь x = "<<findRoot(a, b, e)<<endl;
+cout<<" Корiнь в рiвняннi" << f(findRoot(a,b,e) << endl;
 system("pause");
 }
