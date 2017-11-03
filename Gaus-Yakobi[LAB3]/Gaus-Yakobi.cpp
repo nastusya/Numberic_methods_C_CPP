@@ -5,17 +5,16 @@
 #include <iomanip> 
 using namespace std;
  void fff(double *x,double *f){
-   	f[0]=4*x[0]*x[1]*x[1]-4;
+   	f[0]=4*x[0]*x[0]+x[1]*x[1]-4;
    	f[1]=x[0]-x[1]*x[1]+1;
    }
 int main(void){
-   double x[2]={2,2},x_old[2]={2,2},J[2][2],f[2],x_[2],f_[2];
-   double ee=0.0001,h=0.000001;
+   double x[2]={2.0,2.0},x_old[2]={2.0,2.0},J[2][2],f[2],x_[2],f_[2];
+   double ee=0.0001,h=0.00001;
    bool cond_N;
    int n=2;
    double INVERS[2][2],E[2][2];
    double V[2][2],C[2][2],P[2],X[2],Y[2];
-   
    for(int i=0;i<n;i++)
    	for(int j=0;j<n;j++)
    		if(i==j) E[i][j]=1;
@@ -62,7 +61,7 @@ int main(void){
 			X[i]=Y[i]-X[i];
 			}
 		for(int i=0;i<n;i++)
-			INVERS[i][b]-X[i];
+			INVERS[i][b]=X[i];
 		}
 		for(int i=0;i<n;i++)
 		{
@@ -72,6 +71,9 @@ int main(void){
 				x[i]=x_old[i]-x[i];
 			}
 
+		/**for(int i=0;i<n;i++){
+			cout<<x[i];
+		}*/
 		for(int i=0;i<n;i++)
 		{
 			cond_N=cond_N || fabs((x[i]-x_old[i])/x[i]*100)>ee;
@@ -83,5 +85,6 @@ int main(void){
    for(int i=0;i<n;i++){
    	cout<<"\t\n"<<x[i] <<endl;
    }
- 
+   cout<<4*x[0]*x[0]+x[1]*x[1]-4<<endl;
+   	cout<<x[0]-x[1]*x[1]+1;
 }
